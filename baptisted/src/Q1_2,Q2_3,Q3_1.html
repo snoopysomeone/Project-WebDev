@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.0.0/dist/full.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-base-200 min-h-screen">
+  <header class="navbar bg-primary text-primary-content px-8">
+    <div class="flex-1">
+      <span class="text-2xl font-bold">Certaines Informations</span>
+    </div>
+    <nav class="flex gap-2">
+      <a href="index.html" class="btn btn-ghost">Accueil</a>
+      <a href="calculatrice.html" class="btn btn-ghost">Calculatrice</a>
+      <a href="contact.html" class="btn btn-ghost">Me contacter</a>
+    </nav>
+  </header>
+
+  <main class="max-w-xl mx-auto mt-10 p-6 bg-base-100 rounded-xl shadow-lg">
+    <h1 class="text-2xl font-bold mb-4 text-center">Formulaire de contact</h1>
+    <form id="mailForm" class="flex flex-col gap-3">
+      <input type="text" id="prenom" placeholder="Votre prénom" class="input input-bordered" required>
+      <input type="text" id="nom" placeholder="Votre nom" class="input input-bordered" required>
+      <input type="email" id="email" placeholder="Votre email" class="input input-bordered" required>
+      <textarea id="message" placeholder="Votre message" class="textarea textarea-bordered" required></textarea>
+      <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>
+  </main>
+  <script>
+    document.getElementById('mailForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const prenom = document.getElementById('prenom').value;
+      const nom = document.getElementById('nom').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      const mailto = `mailto:baptiste.dales@epita.fr?subject=Contact%20depuis%20le%20site&body=Nom:%20${encodeURIComponent(nom)}%0APrénom:%20${encodeURIComponent(prenom)}%0AEmail:%20${encodeURIComponent(email)}%0AMessage:%0A${encodeURIComponent(message)}`;
+      window.location.href = mailto;
+    });
+  </script>
+</body>
+</html>

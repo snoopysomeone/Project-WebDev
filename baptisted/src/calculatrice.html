@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculatrice</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.0.0/dist/full.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-base-200 min-h-screen">
+  <header class="navbar bg-primary text-primary-content px-8">
+    <div class="flex-1">
+      <span class="text-2xl font-bold">Certaines Informations</span>
+    </div>
+    <nav class="flex gap-2">
+      <a href="index.html" class="btn btn-ghost">Accueil</a>
+      <a href="calculatrice.html" class="btn btn-ghost btn-active">Calculatrice</a>
+      <a href="contact.html" class="btn btn-ghost">Me contacter</a>
+    </nav>
+  </header>
+
+  <main class="max-w-md mx-auto mt-10 p-6 bg-base-100 rounded-xl shadow-lg">
+    <h1 class="text-2xl font-bold mb-6 text-center">Calculatrice</h1>
+    <div class="flex flex-col gap-4 items-center">
+      <input id="calc-display" type="text" class="input input-bordered w-full text-right text-xl mb-2" value="0" readonly />
+      <div class="grid grid-cols-4 gap-2 w-full">
+        <button class="btn btn-outline" onclick="press('7')">7</button>
+        <button class="btn btn-outline" onclick="press('8')">8</button>
+        <button class="btn btn-outline" onclick="press('9')">9</button>
+        <button class="btn btn-secondary" onclick="press('/')">÷</button>
+        <button class="btn btn-outline" onclick="press('4')">4</button>
+        <button class="btn btn-outline" onclick="press('5')">5</button>
+        <button class="btn btn-outline" onclick="press('6')">6</button>
+        <button class="btn btn-secondary" onclick="press('*')">×</button>
+        <button class="btn btn-outline" onclick="press('1')">1</button>
+        <button class="btn btn-outline" onclick="press('2')">2</button>
+        <button class="btn btn-outline" onclick="press('3')">3</button>
+        <button class="btn btn-secondary" onclick="press('-')">-</button>
+        <button class="btn btn-outline" onclick="press('0')">0</button>
+        <button class="btn btn-outline" onclick="press('.')">.</button>
+        <button class="btn btn-success" onclick="calculate()">=</button>
+        <button class="btn btn-secondary" onclick="press('+')">+</button>
+      </div>
+      <button class="btn btn-error w-full mt-2" onclick="clearDisplay()">C</button>
+    </div>
+  </main>
+  <script>
+    let current = '';
+    let resultDisplayed = false;
+
+    function press(val) {
+      if (resultDisplayed) {
+        if ("0123456789.".includes(val)) {
+          current = '';
+        }
+        resultDisplayed = false;
+      }
+      current += val;
+      document.getElementById('calc-display').value = current;
+    }
+
+    function calculate() {
+      try {
+        let expr = current.replace(/÷/g, '/').replace(/×/g, '*');
+        let res = eval(expr);
+        document.getElementById('calc-display').value = res;
+        current = res.toString();
+        resultDisplayed = true;
+      } catch {
+        document.getElementById('calc-display').value = "Erreur";
+        current = '';
+        resultDisplayed = true;
+      }
+    }
+
+    function clearDisplay() {
+      current = '';
+      document.getElementById('calc-display').value = '0';
+      resultDisplayed = false;
+    }
+  </script>
+</body>
+</html>

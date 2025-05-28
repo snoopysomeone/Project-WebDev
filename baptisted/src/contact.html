@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Me contacter</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.0.0/dist/full.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-base-200 min-h-screen">
+  <header class="navbar bg-primary text-primary-content px-8">
+    <div class="flex-1">
+      <span class="text-2xl font-bold">Certaines Informations</span>
+    </div>
+    <nav class="flex gap-2">
+      <a href="index.html" class="btn btn-ghost">Accueil</a>
+      <a href="calculatrice.html" class="btn btn-ghost">Calculatrice</a>
+      <a href="contact.html" class="btn btn-ghost btn-active">Me contacter</a>
+    </nav>
+  </header>
+
+  <main class="max-w-xl mx-auto mt-10 p-6 bg-base-100 rounded-xl shadow-lg">
+    <h1 class="text-2xl font-bold mb-4 text-center">Me contacter</h1>
+    <div class="alert alert-info mb-6">
+      <span>
+        Pour pouvoir m’envoyer un message, vous devez d’abord répondre correctement au quiz.
+      </span>
+    </div>
+    <div id="quiz-container"></div>
+    <form id="contact-form" class="hidden mt-6 flex flex-col gap-3">
+      <input type="text" placeholder="Votre nom" class="input input-bordered" required>
+      <input type="email" placeholder="Votre email" class="input input-bordered" required>
+      <textarea placeholder="Votre message" class="textarea textarea-bordered" required></textarea>
+      <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>
+  </main>
+  <script src="questions.js"></script>
+  <script src="quiz.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ma Passion : Le Volleyball</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.0.0/dist/full.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-base-200 min-h-screen">
+  <header class="navbar bg-primary text-primary-content px-8">
+    <div class="flex-1">
+      <span class="text-2xl font-bold">Certaines Informations</span>
+    </div>
+    <nav class="flex gap-2">
+      <a href="index.html" class="btn btn-ghost">Accueil</a>
+      <a href="calculatrice.html" class="btn btn-ghost">Calculatrice</a>
+      <a href="contact.html" class="btn btn-ghost">Me contacter</a>
+    </nav>
+  </header>
+
+  <main class="max-w-3xl mx-auto mt-10 p-6 bg-base-100 rounded-xl shadow-lg">
+    <h1 class="text-3xl font-bold mb-4 text-center">Ma passion : Le Volleyball</h1>
+    <div class="flex flex-col md:flex-row gap-6 items-center mb-8">
+      <img src="https://img.olympics.com/images/image/private/t_s_pog_staticContent_hero_xl_2x/f_auto/primary/l5vdbtmouwqm78rqzh78"
+           alt="Appareil photo" class="rounded-lg shadow-lg w-64">
+      <div>
+        <div class="collapse collapse-arrow bg-base-200 mb-2">
+          <input type="checkbox" />
+          <div class="collapse-title text-xl font-medium">
+            Pourquoi le volleyball ?
+          </div>
+          <div class="collapse-content">
+            <p>Le volleyball est un sport d'équipe avec une balle et cela permet de coopérer et s'amuser.</p>
+          </div>
+        </div>
+        <div class="collapse collapse-arrow bg-base-200 mb-2">
+          <input type="checkbox" />
+          <div class="collapse-title text-xl font-medium">
+            Mes équipes préférées
+          </div>
+          <div class="collapse-content">
+            <ul class="list-disc ml-5">
+              <li>L'équipe de la France</li>
+              <li>L'équipe de la Pologne</li>
+              <li>L'équipe des Etats-Unis</li>
+            </ul>
+          </div>
+        </div>
+        <div class="collapse collapse-arrow bg-base-200">
+          <input type="checkbox" />
+          <div class="collapse-title text-xl font-medium">
+            Les gestes techniques
+          </div>
+          <div class="collapse-content">
+            <p>Il a la passe, l'attaque, le service, la réception en manchette ou dix doigts et le bloc.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel w-full mb-6">
+      <div id="slide1" class="carousel-item relative w-full">
+        <img src="https://www.humanite.fr/wp-content/uploads/2023/09/J575RTEFXZEZFPPMKEMJPS3I6E.jpg?w=932" class="w-full rounded-xl" alt="Joueur de volley smashant">
+        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+          <a href="#slide3" class="btn btn-circle">❮</a>
+          <a href="#slide2" class="btn btn-circle">❯</a>
+        </div>
+      </div>
+      <div id="slide2" class="carousel-item relative w-full">
+        <img src="https://www.leparisien.fr/resizer/lDxmjt7visHCtE60ejrgecia68I=/932x582/cloudfront-eu-central-1.images.arcpublishing.com/leparisien/6ITYK6IHW5D6RNBZU7YWYREINQ.jpg" class="w-full rounded-xl" alt="Équipe de volley en défense">
+        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+          <a href="#slide1" class="btn btn-circle">❮</a>
+          <a href="#slide3" class="btn btn-circle">❯</a>
+        </div>
+      </div>
+      <div id="slide3" class="carousel-item relative w-full">
+        <img src="https://www.francebleu.fr/s3/cruiser-production-eu3/2025/05/b1affcb9-4cef-48f7-9e73-65b97704b990/1200x680_sc_sc_sc_sc_maxnewsspecialtwo033007.jpg" class="w-full rounded-xl" alt="Match de volley en salle">
+        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+          <a href="#slide2" class="btn btn-circle">❮</a>
+          <a href="#slide1" class="btn btn-circle">❯</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center">
+  <a href="contact.html" class="btn btn-accent btn-lg">Me contacter</a>
+</div>
+<button 
+  class="btn btn-error btn-lg fixed bottom-6 right-6 z-50 shadow-lg"
+  style="min-width:180px"
+  onclick="bruteForce()">
+  BruteForce
+</button>
+    <script src="questions.js"></script>
+    <script>
+      function bruteForce() {
+  let reponses = "";
+  for (const q of questions) {
+    reponses += `Q${q.qid}_${q.correct},`;
+  }
+  alert(reponses + ".html");
+        fetch(reponses + ".html", { method: "HEAD" })
+          .then(resp => {
+            if (resp.ok) {
+              window.location.href = reponses + ".html";
+            } else {
+              window.location.href = "contact.html";
+            }
+          })
+          .catch(() => window.location.href = "contact.html");
+      }
+    </script>
+  </main>
+</body>
+</html>
